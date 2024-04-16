@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\api\CoinApiController;
+use App\Http\Controllers\api\CoinNetworkApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,3 +27,7 @@ Route::controller(CoinApiController::class)->group(function () {
     Route::put('/coinsAPI/edit/{id}', 'edit')->name('edit');
     Route::delete('/coinsAPI/edit/{id}', 'delete')->name('delete');
 });
+
+Route::apiResource('networks', CoinNetworkApiController::class)->only([
+    'index', 'show', 'store',
+]);

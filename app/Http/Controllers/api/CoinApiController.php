@@ -15,15 +15,15 @@ class CoinApiController extends Controller
 
         //First-way
 
-        // $coins = Coin::all();
-        // $data = [
-        //     'status' => 200,
-        //     'coin' => $coins
-        // ];
-        // return response()->json($data, 200);
+        $coins = Coin::all();
+        $data = [
+            'status' => 200,
+            'coin' => $coins
+        ];
+        return response()->json($data, 200);
 
         // After Collection 2nd way.
-        return new CoinCollection(Coin::all());
+        //return new CoinCollection(Coin::all());
     }
     public function upload(Request $request)
     {
