@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CoinCollection;
 use App\Models\Coin;
 use Illuminate\Http\Request;
 use Validator;
@@ -12,12 +13,17 @@ class CoinApiController extends Controller
     public function index()
     {
 
-        $coins = Coin::all();
-        $data = [
-            'status' => 200,
-            'coin' => $coins
-        ];
-        return response()->json($data, 200);
+        //First-way
+
+        // $coins = Coin::all();
+        // $data = [
+        //     'status' => 200,
+        //     'coin' => $coins
+        // ];
+        // return response()->json($data, 200);
+
+        // After Collection 2nd way.
+        return new CoinCollection(Coin::all());
     }
     public function upload(Request $request)
     {
@@ -67,12 +73,13 @@ class CoinApiController extends Controller
             return response()->json($data, 200);
         }
     }
-    public function delete($id){
+    public function delete($id)
+    {
         $coin = Coin::findOrFail($id)->delete();
         $data = [
             'status' => 200,
             'message' => 'Coin deleted successfully'
         ];
-        return response()->json($data,200);
+        return response()->json($data, 200);
     }
 }
