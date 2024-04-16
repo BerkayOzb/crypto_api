@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCoinNetworkRequest extends FormRequest
+class UpdateCoinNetworkRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,7 +22,7 @@ class StoreCoinNetworkRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'sometimes|required'
+            'name' => 'required'
         ];
     }
 }
