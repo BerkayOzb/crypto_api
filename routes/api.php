@@ -22,6 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('login', [AuthController::class, 'login']);
+Route::post('register', [AuthController::class, 'register']);
 
 Route::controller(CoinApiController::class)->group(function () {
     Route::get('/coinsAPI', 'index')->name('index');
@@ -29,5 +30,6 @@ Route::controller(CoinApiController::class)->group(function () {
     Route::put('/coinsAPI/edit/{id}', 'edit')->name('edit');
     Route::delete('/coinsAPI/edit/{id}', 'delete')->name('delete');
 });
-
-Route::apiResource('networks', CoinNetworkApiController::class);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::apiResource('networks', CoinNetworkApiController::class);
+});

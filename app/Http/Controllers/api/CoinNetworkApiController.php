@@ -9,6 +9,7 @@ use App\Http\Resources\CoinNetworkCollection;
 use App\Http\Resources\CoinNetworkResource;
 use App\Models\CoinNetwork;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Spatie\QueryBuilder\QueryBuilder;
 
 class CoinNetworkApiController extends Controller
@@ -26,7 +27,7 @@ class CoinNetworkApiController extends Controller
     public function store(StoreCoinNetworkRequest $request)
     {
         $validated = $request->validated();
-        $network = CoinNetwork::create($validated);
+        $network = Auth::user()->networks()->create($validated);
 
         return new CoinNetworkResource($network);
     }
