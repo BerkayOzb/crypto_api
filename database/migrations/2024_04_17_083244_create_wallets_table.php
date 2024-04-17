@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('coin_networks', function (Blueprint $table) {
+        Schema::create('wallets', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
             $table->foreignId('creator_id')->constrained('users');
+            $table->timestamps();
         });
     }
 
@@ -21,8 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('coin_networks', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('wallets');
     }
 };

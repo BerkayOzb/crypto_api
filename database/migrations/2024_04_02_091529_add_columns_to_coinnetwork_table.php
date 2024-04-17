@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('coin_networks', function (Blueprint $table) {
-            $table->string('network_id');
+
         });
     }
 

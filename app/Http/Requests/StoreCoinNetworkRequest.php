@@ -22,7 +22,7 @@ class StoreCoinNetworkRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'sometimes|required'
+            'name' => 'sometimes|required|unique:coin_networks,name'
         ];
     }
 }

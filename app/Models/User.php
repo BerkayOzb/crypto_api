@@ -49,8 +49,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-    public function networks(): HasMany
-    {
-        return $this->hasMany(CoinNetwork::class, 'creator_id');
-    }
+    // public function networks(): HasMany
+    // {
+    //     return $this->hasMany(CoinNetwork::class, 'creator_id');
+    // }
 }

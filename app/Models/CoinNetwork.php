@@ -12,14 +12,8 @@ class CoinNetwork extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    public function creator(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'creator_id');
-    }
-    protected static function booted(): void
-    {
-        static::addGlobalScope('creator', function (Builder $builder) {
-            $builder->where('creator_id', Auth::id());
-        });
-    }
+    // public function creator(): BelongsTo
+    // {
+    //     return $this->belongsTo(User::class, 'creator_id');
+    // }
 }
